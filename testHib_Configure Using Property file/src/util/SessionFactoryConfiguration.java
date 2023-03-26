@@ -13,7 +13,7 @@ import java.util.Properties;
  */
 public class SessionFactoryConfiguration {
     private static SessionFactoryConfiguration sessionFactoryConfiguration;
-    private final Session session;
+    private final SessionFactory sessionFactory;
 
     private SessionFactoryConfiguration() {
         Configuration configuration = new Configuration();
@@ -29,8 +29,8 @@ public class SessionFactoryConfiguration {
         }
         configuration.mergeProperties(property).buildSessionFactory();
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        session = sessionFactory.openSession();
+        sessionFactory = configuration.buildSessionFactory();
+
     }
 
     public static SessionFactoryConfiguration getInstance() {
@@ -40,6 +40,7 @@ public class SessionFactoryConfiguration {
     }
 
     public Session getSession() {
+        Session session = sessionFactory.openSession();
         return session;
     }
 }
