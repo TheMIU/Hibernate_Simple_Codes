@@ -36,10 +36,10 @@ public class Main {
         Session session1 = SessionFactoryConfiguration.getInstance().getSession();
         Transaction transaction1 = session1.beginTransaction();
 
-        Customer customer = session1.get(Customer.class, "C001"); // execute query
+        Customer customer = session1.get(Customer.class, "C001"); // execute query (once)
         System.out.println(customer);
 
-        Customer customerTest = session1.get(Customer.class, "C001");  // fetch data using cache
+        Customer customerTest = session1.get(Customer.class, "C001");  // get data using cache
         System.out.println(customerTest);
 
         transaction1.commit();
@@ -49,7 +49,7 @@ public class Main {
         Session session2 = SessionFactoryConfiguration.getInstance().getSession();
         Transaction transaction2 = session2.beginTransaction();
 
-        Customer customerNextSession = session2.get(Customer.class, "C001"); // execute query
+        Customer customerNextSession = session2.get(Customer.class, "C001"); // get data using cache
         System.out.println(customerNextSession);
 
         transaction2.commit();

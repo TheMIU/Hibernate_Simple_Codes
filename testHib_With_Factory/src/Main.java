@@ -9,7 +9,7 @@ public class Main {
         customer.setId(1);
         customer.setName("Scooby");
 
-        // cession object using a factory
+        // Session object using a factory
         Session session = SessionFactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
